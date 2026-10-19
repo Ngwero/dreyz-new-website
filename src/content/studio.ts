@@ -60,8 +60,8 @@ export const testimonials = [
 
 export const studio = {
   name: "Dreyz Interior",
-  tagline: "Design · Comfort · Bliss",
-  statement: "The Best At DESIGN. COMFORT. BLISS.",
+  tagline: "Design | Construct | Furnish",
+  statement: "The Best At DESIGN. CONSTRUCT. FURNISH.",
   intro:
     "Welcome to Dreyz Interior, where creativity meets functionality. Our passion for design drives us to transform spaces into personalized havens that reflect your unique style and needs.",
   philosophy:

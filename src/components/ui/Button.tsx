@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-orange text-white hover:bg-sand px-7 py-4",
+          "glass-button text-white px-7 py-4",
         secondary:
-          "border border-ink/20 text-ink hover:border-orange hover:text-orange px-7 py-4",
+          "glass-chip rounded-full text-ink hover:border-orange hover:text-orange px-7 py-4",
         ghost:
           "text-ink/70 hover:text-orange px-2 py-2 underline-offset-8 hover:underline",
         dark: "bg-ink text-white hover:bg-orange px-7 py-4",

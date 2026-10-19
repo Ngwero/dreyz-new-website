@@ -96,7 +96,7 @@ export function FeaturedProjects() {
                   sizes="(max-width:768px) 100vw, 33vw"
                   className="object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/95 via-[#E0DDCF]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F0F0F0]/95 via-[#F0F0F0]/30 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 text-ink md:p-6">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-orange">
                     {project.category[0]} · {project.year}

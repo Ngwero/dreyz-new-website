@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { media } from "@/content/media";
 import { featuredProjects } from "@/content/projects";
@@ -77,33 +77,24 @@ const slides = [
   },
 ].filter((s) => Boolean(s.image));
 
-const rotatingWords = ["DESIGN.", "COMFORT.", "BLISS."];
-
 export function Hero() {
+  const reducedMotion = useReducedMotion();
   const [active, setActive] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused || slides.length < 2) return;
+    if (paused || reducedMotion || slides.length < 2) return;
     const id = window.setInterval(() => {
       setActive((i) => (i + 1) % slides.length);
     }, 5200);
     return () => window.clearInterval(id);
-  }, [paused]);
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setWordIndex((i) => (i + 1) % rotatingWords.length);
-    }, 2600);
-    return () => window.clearInterval(id);
-  }, []);
+  }, [paused, reducedMotion]);
 
   const slide = slides[active] ?? slides[0];
 
   return (
     <section
-      className="hero-section relative min-h-[100svh] overflow-hidden bg-navy"
+      className="hero-section hero-immersive relative z-[2] min-h-[100svh] overflow-hidden bg-slate text-white"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -128,54 +119,30 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#E0DDCF]/95 via-[#E0DDCF]/70 to-[#E0DDCF]/25 md:via-[#E0DDCF]/55 md:to-[#E0DDCF]/15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/95 via-[#E0DDCF]/40 to-[#E0DDCF]/30 md:from-[#E0DDCF]/90 md:via-transparent md:to-[#E0DDCF]/35" />
+        <div className="hero-glass-overlay absolute inset-0" />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[1440px] flex-col justify-end px-4 pb-8 pt-28 sm:px-5 sm:pb-10 sm:pt-36 md:justify-center md:px-10 md:pb-16 md:pt-40 lg:px-14 lg:pt-44">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[1600px] flex-col justify-end px-5 pb-6 pt-36 sm:px-8 md:px-12 md:pb-8 md:pt-40 lg:px-16 lg:pt-44">
         <div className="grid w-full items-end gap-8 lg:grid-cols-12 lg:gap-8">
           <div className="min-w-0 lg:col-span-7">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="mb-3 text-[10px] uppercase tracking-[0.28em] text-orange sm:mb-4 sm:text-[11px] sm:tracking-[0.32em]"
-            >
-              Transform Your Space
-            </motion.p>
-
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-[clamp(1.65rem,5vw,3.5rem)] leading-[1.12] text-ink"
+              className="font-display text-[clamp(3.3rem,7.6vw,7.5rem)] leading-[0.98] tracking-[-0.055em] text-white"
             >
-              <span className="block">Designing spaces</span>
-              <span className="block">that feel like</span>
-              <span className="relative mt-1 block min-h-[1.1em] text-orange sm:mt-2">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={rotatingWords[wordIndex]}
-                    initial={{ y: 28, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -28, opacity: 0 }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="inline-block"
-                  >
-                    {rotatingWords[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-              </span>
+              <span className="block">Spaces for</span>
+              <span className="block font-normal italic text-white/85">better living.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.55 }}
-              className="mt-5 max-w-lg text-sm leading-relaxed text-ink/65 sm:mt-6 sm:text-base md:text-lg"
+              className="mt-7 max-w-md text-sm leading-relaxed text-white/75 sm:text-base"
             >
-              From Airbnb homestays to residences and workplaces — Dreyz Interior
-              crafts welcoming, stylish interiors that earn 5-star living.
+              Thoughtfully designed. Beautifully built. From your first idea
+              to the final detail, we bring your space to life.
             </motion.p>
 
             <motion.div
@@ -186,13 +153,13 @@ export function Hero() {
             >
               <Link
                 href="/projects"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-orange px-8 text-[11px] uppercase tracking-[0.18em] text-white shadow-[0_8px_24px_rgba(208,96,64,0.3)] transition hover:-translate-y-0.5 hover:bg-ink hover:shadow-lg sm:w-auto"
+                className="glass-button inline-flex min-h-14 w-full items-center justify-between gap-10 rounded-full px-7 text-[11px] uppercase tracking-[0.16em] text-white sm:w-auto"
               >
-                View Projects
+                Explore our work <span aria-hidden className="text-xl">↗</span>
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full glass-chip px-8 text-[11px] uppercase tracking-[0.18em] text-ink transition hover:-translate-y-0.5 hover:border-orange hover:text-orange sm:w-auto"
+                className="glass-dark inline-flex min-h-14 w-full items-center justify-center rounded-full px-7 text-[11px] uppercase tracking-[0.16em] text-white transition hover:bg-white/20 sm:w-auto"
               >
                 Begin Project
               </Link>
@@ -202,7 +169,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.8 }}
-              className="mt-8 flex flex-wrap gap-6 border-t border-ink/15 pt-6 sm:mt-12 sm:gap-8 sm:pt-8 md:gap-12"
+              className="mt-9 grid max-w-lg grid-cols-3 gap-4 border-t border-white/20 pt-5 md:mt-12"
             >
               {[
                 { value: `${featuredProjects.length}+`, label: "Featured series" },
@@ -210,10 +177,10 @@ export function Hero() {
                 { value: "2026", label: "Africa Golden Awards" },
               ].map((stat) => (
                 <div key={stat.label} className="min-w-0">
-                  <p className="font-display text-xl text-ink sm:text-2xl md:text-3xl">
+                  <p className="font-display text-xl text-white sm:text-2xl">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-[9px] uppercase tracking-[0.16em] text-ink/45 sm:text-[10px] sm:tracking-[0.2em]">
+                  <p className="mt-2 text-[8px] uppercase leading-relaxed tracking-[0.16em] text-white/65 sm:text-[9px]">
                     {stat.label}
                   </p>
                 </div>
@@ -226,14 +193,14 @@ export function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="hidden min-w-0 md:block lg:col-span-4 lg:col-start-9"
+            className="hidden min-w-0 lg:col-span-4 lg:col-start-9 lg:block"
           >
-            <div className="glass-strong border border-white/70 p-5 md:p-6">
+            <div className="glass-dark rounded-[2rem] p-5 md:p-6">
               <div className="mb-4 flex items-center justify-between gap-3">
-                <p className="text-[10px] uppercase tracking-[0.24em] text-orange">
+                <p className="text-[10px] uppercase tracking-[0.24em] text-white/80">
                   Now featuring
                 </p>
-                <p className="shrink-0 font-mono text-[11px] text-ink/45">
+                <p className="shrink-0 font-mono text-[11px] text-white/60">
                   {String(active + 1).padStart(2, "0")} /{" "}
                   {String(slides.length).padStart(2, "0")}
                 </p>
@@ -260,13 +227,13 @@ export function Hero() {
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-orange">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/60">
                   {slide.label}
                 </p>
-                <p className="font-display mt-2 text-2xl text-ink transition group-hover:text-orange">
+                <p className="font-display mt-2 text-2xl text-white">
                   {slide.title}
                 </p>
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-ink/45 transition group-hover:text-ink">
+                <p className="mt-5 border-t border-white/15 pt-4 text-[10px] uppercase tracking-[0.18em] text-white/70 transition group-hover:text-white">
                   Explore case study →
                 </p>
               </Link>
@@ -279,19 +246,20 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.7 }}
-          className="mt-8 w-full md:mt-14"
+          className="glass-dark mt-9 w-full rounded-2xl p-3 md:mt-12 md:p-4"
         >
-          <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:px-0 md:gap-3 [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-2 overflow-x-auto p-1 [-ms-overflow-style:none] [scrollbar-width:none] md:gap-3 [&::-webkit-scrollbar]:hidden">
             {slides.map((item, i) => (
               <button
                 key={item.image}
                 type="button"
                 onClick={() => setActive(i)}
                 aria-label={`Show ${item.title}`}
+                aria-pressed={i === active}
                 className={cn(
-                  "relative h-12 w-[4.5rem] shrink-0 overflow-hidden rounded-xl transition duration-500 sm:h-14 sm:w-20 md:h-16 md:w-24",
+                  "relative h-10 w-14 shrink-0 overflow-hidden rounded-lg transition duration-500 sm:h-12 sm:w-20 md:h-14 md:flex-1",
                   i === active
-                    ? "ring-2 ring-orange ring-offset-2 ring-offset-[#E0DDCF]"
+                    ? "ring-1 ring-white ring-offset-2 ring-offset-slate"
                     : "opacity-55 hover:opacity-100"
                 )}
               >
@@ -308,7 +276,7 @@ export function Hero() {
         </motion.div>
 
         <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-ink/10">
-          {!paused && (
+          {!paused && !reducedMotion && (
             <motion.div
               key={active}
               className="h-full bg-orange"

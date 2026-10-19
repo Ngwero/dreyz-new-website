@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Aboreto } from "next/font/google";
+import localFont from "next/font/local";
+import { Cormorant_Garamond } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
@@ -8,17 +9,27 @@ import { UsalProvider } from "@/components/providers/UsalProvider";
 import { ScrollTriggerRefresh } from "@/components/shared/Reveal";
 import "./globals.css";
 
-/** Aboreto is single-weight (400) on Google Fonts; headings use font-weight 700. */
-const aboreto = Aboreto({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-aboreto",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const aileron = localFont({
+  src: [
+    { path: "./fonts/Aileron-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/Aileron-SemiBold.otf", weight: "600", style: "normal" },
+    { path: "./fonts/Aileron-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-aileron",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Dreyz Interior – Interior Design Studio",
+    default: "Dreyz Interior – Design | Construct | Furnish",
     template: "%s · Dreyz Interior",
   },
   description:
@@ -33,7 +44,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#E0DDCF",
+  themeColor: "#45102e",
 };
 
 export default function RootLayout({
@@ -42,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={aboreto.variable}>
+    <html lang="en" className={`${aileron.variable} ${cormorant.variable}`}>
       <body className="font-sans text-ink antialiased">
         <UsalProvider>
           <SmoothScroll>

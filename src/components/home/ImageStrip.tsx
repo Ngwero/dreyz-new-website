@@ -100,7 +100,7 @@ export function ImageStrip() {
               sizes="40vw"
               className="object-cover transition duration-700 ease-out group-hover:scale-105"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/55 via-transparent to-transparent opacity-80" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F0F0F0]/55 via-transparent to-transparent opacity-80" />
           </article>
         ))}
       </div>

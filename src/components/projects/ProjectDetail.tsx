@@ -36,7 +36,7 @@ export function ProjectDetail({
             className="object-cover"
           />
         </ParallaxImage>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/95 via-[#E0DDCF]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F0F0F0]/95 via-[#F0F0F0]/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1440px] px-5 pb-12 md:px-10 md:pb-16 lg:px-14">
           <div className="flex flex-wrap gap-2">
             {project.category.map((c) => (

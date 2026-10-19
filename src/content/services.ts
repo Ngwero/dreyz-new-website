@@ -1,4 +1,8 @@
-import { media } from "./media";
+export type ServiceCategory =
+  | "planning"
+  | "atmosphere"
+  | "craft"
+  | "delivery";
 
 export interface Service {
   slug: string;
@@ -7,9 +11,75 @@ export interface Service {
   description: string;
   deliverables: string[];
   image: string;
+  category: ServiceCategory;
+  outcome: string;
 }
 
-const img = media.projects;
+export const serviceCategories: {
+  id: ServiceCategory;
+  label: string;
+  blurb: string;
+}[] = [
+  {
+    id: "planning",
+    label: "Planning",
+    blurb: "Space, scope, and decisions that lock in before build begins.",
+  },
+  {
+    id: "atmosphere",
+    label: "Atmosphere",
+    blurb: "Color, light, and surfaces that set how a room feels.",
+  },
+  {
+    id: "craft",
+    label: "Craft",
+    blurb: "Furniture, finishes, and ceiling work that give the room its weight.",
+  },
+  {
+    id: "delivery",
+    label: "Delivery",
+    blurb: "Visuals, materials, and coordination through to install.",
+  },
+];
+
+export const serviceScopes = [
+  {
+    title: "Homes",
+    description:
+      "Apartments, houses, and renovations shaped around how you actually live.",
+    image: "/images/featured/living-stone-wall.png",
+  },
+  {
+    title: "Workplaces",
+    description:
+      "Offices and studios that feel sharp, calm, and ready for focus.",
+    image: "/images/hero/office.png",
+  },
+  {
+    title: "Hospitality",
+    description:
+      "Airbnb, boutique stays, and guest-first spaces that earn five stars.",
+    image: "/images/featured/retail-boutique.png",
+  },
+];
+
+export const engagementPath = [
+  {
+    step: "01",
+    title: "Consult",
+    description: "Vision, budget, and timeline aligned in one focused session.",
+  },
+  {
+    step: "02",
+    title: "Design",
+    description: "Plans, palettes, and renders you can approve with clarity.",
+  },
+  {
+    step: "03",
+    title: "Deliver",
+    description: "Sourcing, trades, and finishing coordinated to the last detail.",
+  },
+];
 
 /** Services from dreyzinterior.com */
 export const services: Service[] = [
@@ -27,23 +97,9 @@ export const services: Service[] = [
       "Circulation & zoning diagrams",
       "Client presentation boards",
     ],
-    image: "/images/projects/office/001f6cdd-334a-48d0-bb11-3495752f05c2-1-105-c-01.jpg",
-  },
-  {
-    slug: "color-schemes-and-lighting",
-    title: "Color Schemes and Lighting Plans",
-    short:
-      "Palettes and light that shape mood, comfort, and the atmosphere of every room.",
-    description:
-      "The color palette should blend well with the lighting, otherwise it may spoil the look and ambiance of the space. The right combination of color scheme and light plan features a great aesthetic value in the room. Our staff will guide the selection of the right colors for your interior design project.",
-    deliverables: [
-      "Color palette development",
-      "Lighting layout plans",
-      "Fixture recommendations",
-      "Mood & ambiance studies",
-      "Sample board reviews",
-    ],
-    image: "/images/projects/living/225d004a-cf3e-420a-96f0-b89cb3f838a8-1-102-o-04.jpg",
+    image: "/images/services/floor-and-space-planning.png",
+    category: "planning",
+    outcome: "A plan you can build from — clear rooms, clear flow.",
   },
   {
     slug: "client-consultation",
@@ -59,23 +115,27 @@ export const services: Service[] = [
       "Contractor coordination guidance",
       "Scope definition",
     ],
-    image: "/images/projects/living/12-1-02.jpg",
+    image: "/images/services/client-consultation.png",
+    category: "planning",
+    outcome: "Shared goals before a single wall is touched.",
   },
   {
-    slug: "wall-decor",
-    title: "Wall Décor",
+    slug: "color-schemes-and-lighting",
+    title: "Color Schemes and Lighting Plans",
     short:
-      "Focal points and art that complete your walls and define each room’s character.",
+      "Palettes and light that shape mood, comfort, and the atmosphere of every room.",
     description:
-      "One of the most basic principles of interior design is that every room needs a focal point or a single design element that will instantly draw the eye into the space and give the viewer a sense of what to expect. At Dreyz Interior, we help identify what art works best for your space to make your spaces and walls complete.",
+      "The color palette should blend well with the lighting, otherwise it may spoil the look and ambiance of the space. The right combination of color scheme and light plan features a great aesthetic value in the room. Our staff will guide the selection of the right colors for your interior design project.",
     deliverables: [
-      "Focal point strategy",
-      "Artwork curation",
-      "Wall treatment concepts",
-      "Installation guidance",
-      "Styling recommendations",
+      "Color palette development",
+      "Lighting layout plans",
+      "Fixture recommendations",
+      "Mood & ambiance studies",
+      "Sample board reviews",
     ],
-    image: "/images/projects/bedroom/02e-01.png",
+    image: "/images/services/color-schemes-and-lighting-v2.png",
+    category: "atmosphere",
+    outcome: "Rooms that feel intentional from morning to night.",
   },
   {
     slug: "painting-and-polishing",
@@ -92,6 +152,26 @@ export const services: Service[] = [
       "On-site quality review",
     ],
     image: "/images/projects/kitchen/15-1-02.jpg",
+    category: "atmosphere",
+    outcome: "Surfaces that hold the palette under real light.",
+  },
+  {
+    slug: "wall-decor",
+    title: "Wall Décor",
+    short:
+      "Focal points and art that complete your walls and define each room’s character.",
+    description:
+      "One of the most basic principles of interior design is that every room needs a focal point or a single design element that will instantly draw the eye into the space and give the viewer a sense of what to expect. At Dreyz Interior, we help identify what art works best for your space to make your spaces and walls complete.",
+    deliverables: [
+      "Focal point strategy",
+      "Artwork curation",
+      "Wall treatment concepts",
+      "Installation guidance",
+      "Styling recommendations",
+    ],
+    image: "/images/services/wall-decor.png",
+    category: "craft",
+    outcome: "Walls that lead the eye and finish the story.",
   },
   {
     slug: "furnishing",
@@ -107,23 +187,9 @@ export const services: Service[] = [
       "Placement & styling",
       "Supplier coordination",
     ],
-    image: "/images/projects/living/2580796c-b381-4c82-9e6b-a8b045afcc34-1-102-o-05.jpg",
-  },
-  {
-    slug: "2d-3d-rendering",
-    title: "2D/3D Rendering",
-    short:
-      "See your space before construction — materials, décor, and light made visible.",
-    description:
-      "Interior 2D/3D renderings provide a visual representation of what your interior will look like after the renovation has completed. 3D renderings show clients what the décor, materials, and colors will look like in the project so decisions are clear and confident.",
-    deliverables: [
-      "Concept mood renders",
-      "Photoreal interior views",
-      "Material & color studies",
-      "Presentation boards",
-      "Revision rounds",
-    ],
-    image: "/images/projects/office/5338cb8d-2558-42f2-9044-0ac426e262ee-1-105-c-05.jpg",
+    image: "/images/services/furnishing.png",
+    category: "craft",
+    outcome: "Pieces that feel personal and last beyond one home.",
   },
   {
     slug: "ceilings-and-gypsum",
@@ -139,7 +205,29 @@ export const services: Service[] = [
       "Material specifications",
       "Installation coordination",
     ],
-    image: "/images/projects/office/1dcdd2b5-3e87-45cc-adff-5ac6829f5563-1-102-o-02.jpg",
+    image:
+      "/images/projects/office/1dcdd2b5-3e87-45cc-adff-5ac6829f5563-1-102-o-02.jpg",
+    category: "craft",
+    outcome: "Ceilings that frame light and lift the architecture.",
+  },
+  {
+    slug: "2d-3d-rendering",
+    title: "2D/3D Rendering",
+    short:
+      "See your space before construction — materials, décor, and light made visible.",
+    description:
+      "Interior 2D/3D renderings provide a visual representation of what your interior will look like after the renovation has completed. 3D renderings show clients what the décor, materials, and colors will look like in the project so decisions are clear and confident.",
+    deliverables: [
+      "Concept mood renders",
+      "Photoreal interior views",
+      "Material & color studies",
+      "Presentation boards",
+      "Revision rounds",
+    ],
+    image:
+      "/images/projects/office/5338cb8d-2558-42f2-9044-0ac426e262ee-1-105-c-05.jpg",
+    category: "delivery",
+    outcome: "Decisions you can see — before build begins.",
   },
   {
     slug: "material-selection",
@@ -155,7 +243,9 @@ export const services: Service[] = [
       "Sample procurement",
       "Delivery coordination",
     ],
-    image: "/images/projects/bathroom/img-0154-3-04.jpg",
+    image: "/images/services/material-selection.png",
+    category: "delivery",
+    outcome: "Quality finishes, purchased with budget discipline.",
   },
 ];
 

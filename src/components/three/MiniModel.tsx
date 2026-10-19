@@ -100,7 +100,7 @@ export function MiniModel() {
       camera={{ position: [2.9, 1.85, 3.4], fov: 34 }}
       gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping }}
     >
-      <color attach="background" args={["#E0DDCF"]} />
+      <color attach="background" args={["#F0F0F0"]} />
       <ambientLight intensity={0.38} />
       <directionalLight position={[3, 6, 2]} intensity={1.3} color="#fff5e8" />
       <directionalLight position={[-2, 2, -1]} intensity={0.4} color="#a8c0d8" />

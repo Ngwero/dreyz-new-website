@@ -1,10 +1,5 @@
 @import "tailwindcss";
 
-/*
-  Brand colors from Dreyz logo mark:
-  Lime #A0B024 · Terracotta #D06040 · Slate purple #404050
-*/
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -26,33 +21,34 @@
   --color-slate: var(--slate);
   --color-line: var(--line);
   --color-muted: var(--muted);
-  --font-display: var(--font-aboreto), "Aboreto", serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --color-burgundy: var(--burgundy);
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-aileron), Arial, sans-serif;
+  --font-body: var(--font-aileron), Arial, sans-serif;
 }
 
 :root {
   --background: #ffffff;
   --foreground: #141414;
   --ink: #141414;
-  --ink-soft: #f6f4f1;
-  --navy: #e0ddcf;
+  --ink-soft: #f4f4f5;
+  --navy: #17366c;
   --paper: #ffffff;
-  --paper-dim: #f3f0ec;
-  --stone: #8d7a4e;
-  --stone-light: #a89870;
-  --concrete: #eceae6;
-  /* Logo palette */
-  --olive: #a0b024; /* lime square */
-  --orange: #d06040; /* terracotta square — primary accent / CTAs */
-  --terracotta: #d06040;
-  --slate: #404050; /* purple-gray square */
-  --heading: #404050;
-  --sand: #d06040;
-  --bronze: #c05030;
-  --gold: #b0c020;
-  --line: rgba(64, 64, 80, 0.12);
-  --muted: rgba(64, 64, 80, 0.62);
+  --paper-dim: #f0f0f0;
+  --stone: #68696d;
+  --stone-light: #8c8d8d;
+  --concrete: #e8e9ec;
+  --burgundy: #45102e;
+  --olive: var(--navy);
+  --orange: var(--burgundy);
+  --terracotta: var(--burgundy);
+  --slate: #272b36;
+  --heading: var(--slate);
+  --sand: #602043;
+  --bronze: var(--burgundy);
+  --gold: var(--navy);
+  --line: rgba(39, 43, 54, 0.14);
+  --muted: #63656d;
 }
 
 * {
@@ -66,19 +62,25 @@ html {
 
 body {
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
+  font-family: var(--font-aileron), Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
   max-width: 100vw;
   background:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(160, 176, 36, 0.12), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(208, 96, 64, 0.1), transparent 45%),
-    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(64, 64, 80, 0.06), transparent 50%),
-    linear-gradient(180deg, #f7f5f1 0%, #ebe9e3 50%, #f3f0ec 100%);
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(23, 54, 108, 0.16), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(69, 16, 46, 0.14), transparent 45%),
+    linear-gradient(180deg, #ffffff 0%, #f0f0f0 50%, #f5f5f6 100%);
   background-attachment: fixed;
+}
+
+/* Home scroll-color atmosphere — let the fixed color layer show through */
+html.scroll-color-active body {
+  background-color: transparent;
+  background-image: none;
+  background-attachment: scroll;
+  transition: background-color 0.6s ease;
 }
 
 .safe-top {
@@ -110,16 +112,47 @@ h2,
 h3,
 h4,
 .font-display {
-  font-family: var(--font-aboreto), "Aboreto", serif;
-  font-weight: 700;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--heading);
 }
 
+/* Overlays on photography — beat heading color above */
+h1.text-white,
+h2.text-white,
+h3.text-white,
+h4.text-white,
+.font-display.text-white,
+.text-on-image h1,
+.text-on-image h2,
+.text-on-image h3,
+.text-on-image h4,
+.text-on-image .font-display {
+  color: #ffffff;
+}
+
+.text-on-image .text-white\/75,
+.text-on-image p.text-white\/75,
+.text-on-image a.text-white\/75 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.text-on-image .text-white\/70,
+.text-on-image p.text-white\/70,
+.text-on-image a.text-white\/70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-on-image .text-white\/65,
+.text-on-image p.text-white\/65 {
+  color: rgba(255, 255, 255, 0.65);
+}
+
 .text-chalk {
-  font-family: var(--font-aboreto), "Aboreto", serif;
+  font-family: var(--font-aileron), Arial, sans-serif;
   font-weight: 700;
-  color: #fffef8;
+  color: #ffffff;
   letter-spacing: 0.04em;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.35),
@@ -128,7 +161,6 @@ h4,
   -webkit-font-smoothing: antialiased;
 }
 
-/* Keep hero text on ink — heading green is for the rest of the site */
 .hero-section h1,
 .hero-section h2,
 .hero-section h3,
@@ -138,13 +170,11 @@ h4,
 }
 
 .font-body {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Helvetica, Arial, sans-serif;
+  font-family: var(--font-aileron), Arial, sans-serif;
   font-weight: 400;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -161,15 +191,15 @@ a {
 .glass {
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.62) 0%,
-    rgba(255, 255, 255, 0.38) 100%
+    rgba(255, 255, 255, 0.68) 0%,
+    rgba(255, 255, 255, 0.22) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 1.25rem;
+  border-radius: 1.75rem;
   backdrop-filter: blur(22px) saturate(170%);
   -webkit-backdrop-filter: blur(22px) saturate(170%);
   box-shadow:
-    0 8px 32px rgba(20, 20, 20, 0.06),
+    0 16px 48px -20px rgba(23, 54, 108, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.75),
     inset 0 -1px 0 rgba(255, 255, 255, 0.2);
 }
@@ -177,8 +207,8 @@ a {
 .glass-strong {
   background: linear-gradient(
     160deg,
-    rgba(255, 255, 255, 0.78) 0%,
-    rgba(255, 255, 255, 0.48) 100%
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.38) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 1.25rem;
@@ -193,7 +223,7 @@ a {
 .glass-soft {
   background: linear-gradient(
     145deg,
-    rgba(224, 221, 207, 0.45) 0%,
+    rgba(232, 233, 236, 0.45) 0%,
     rgba(255, 255, 255, 0.28) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -206,8 +236,8 @@ a {
 .glass-nav {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.72) 0%,
-    rgba(255, 255, 255, 0.42) 100%
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.65) 100%
   );
   border: 1px solid rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(28px) saturate(180%);
@@ -240,6 +270,82 @@ a {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
+.hero-immersive h1,
+.hero-immersive .font-display {
+  color: #ffffff;
+}
+
+.hero-immersive h1 {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+}
+
+.hero-glass-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 23, 31, 1) 0%,
+    rgba(20, 23, 31, 0.98) 42%,
+    rgba(27, 31, 41, 0.78) 68%,
+    rgba(39, 43, 54, 0.16) 100%
+  );
+  backdrop-filter: blur(3px) saturate(115%);
+  -webkit-backdrop-filter: blur(3px) saturate(115%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.glass-dark {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(39, 43, 54, 0.28));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(24px) saturate(135%);
+  -webkit-backdrop-filter: blur(24px) saturate(135%);
+  box-shadow: 0 24px 64px -24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-button {
+  background: linear-gradient(135deg, rgba(117, 48, 85, 0.92), rgba(69, 16, 46, 0.86));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 10px 28px rgba(69, 16, 46, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-button:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 16px 36px rgba(69, 16, 46, 0.32);
+}
+
+.glass-mobile-menu {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(235, 236, 243, 0.96));
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+
+.consultation-shell {
+  background: radial-gradient(ellipse at 8% 0%, #602043, transparent 60%), radial-gradient(ellipse at 100% 100%, #17366c, transparent 65%), #272b36;
+  box-shadow: 0 30px 80px -35px rgba(39, 43, 54, 0.45);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-dark {
+    background: #272b36;
+  }
+
+  .glass,
+  .glass-strong,
+  .glass-nav,
+  .glass-nav-scrolled {
+    background: #f4f4f5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-button:hover {
+    transform: none;
+  }
+}
+
 /* Soft corners by default for media & panels */
 .rounded-media {
   border-radius: 1.25rem;
@@ -261,8 +367,8 @@ a {
 .ink-section {
   background: linear-gradient(
     180deg,
-    rgba(246, 244, 241, 0.62) 0%,
-    rgba(246, 244, 241, 0.4) 100%
+    rgba(244, 244, 245, 0.62) 0%,
+    rgba(244, 244, 245, 0.4) 100%
   );
   backdrop-filter: blur(22px) saturate(150%);
   -webkit-backdrop-filter: blur(22px) saturate(150%);
@@ -273,8 +379,8 @@ a {
 .navy-section {
   background: linear-gradient(
     180deg,
-    rgba(224, 221, 207, 0.55) 0%,
-    rgba(224, 221, 207, 0.35) 100%
+    rgba(232, 233, 236, 0.55) 0%,
+    rgba(232, 233, 236, 0.35) 100%
   );
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -285,14 +391,14 @@ a {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f3f0ec;
+  background: var(--paper-dim);
 }
 ::-webkit-scrollbar-thumb {
-  background: #404050;
+  background: var(--slate);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d06040;
+  background: var(--burgundy);
 }
 
 @keyframes marquee {

@@ -51,7 +51,7 @@ export function MaterialsSection() {
                 sizes="(max-width:768px) 50vw, 25vw"
                 className="object-cover transition duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/90 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F0F0F0]/90 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <h3 className="text-sm font-medium text-ink md:text-base">{m.name}</h3>
               </div>

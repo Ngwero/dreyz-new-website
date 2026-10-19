@@ -1,9 +1,9 @@
 import manifest from "./media-manifest.json";
 
 export const media = {
-  logo: "/images/brand/logo-menu.png",
-  logoDark: "/images/brand/logo.png",
-  logoMark: "/images/brand/logo-mark.png",
+  logo: "/images/brand/dreyz-logo.png",
+  logoDark: "/images/brand/dreyz-logo.png",
+  logoMark: "/images/brand/dreyz-mark.png",
   marble: "/images/brand/marble.jpg",
   hero: [
     "/images/hero/kitchen.png",

@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
@@ -13,7 +12,7 @@ const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT US" },
   { href: "/services", label: "SERVICES" },
-  { href: "/projects", label: "AIRBNBS" },
+  { href: "/airbnb", label: "AIRBNBS" },
   { href: "/projects", label: "PROJECTS" },
   { href: "/process", label: "RESOURCES" },
 ];
@@ -97,8 +96,8 @@ export function Header() {
   }, []);
 
   const isActive = (href: string, label: string) => {
-    if (label === "AIRBNBS") return false;
     if (href === "/") return pathname === "/";
+    if (label === "AIRBNBS") return pathname.startsWith("/airbnb");
     if (label === "PROJECTS") return pathname.startsWith("/projects");
     return pathname.startsWith(href);
   };
@@ -118,20 +117,24 @@ export function Header() {
           className="relative z-20 shrink-0 rounded-full pl-0.5 transition hover:opacity-80 sm:pl-1"
           onClick={() => setOpen(false)}
         >
-          <Image
-            src={media.logo}
-            alt="Dreyz Interior"
-            width={200}
-            height={200}
-            className="h-11 w-auto bg-transparent object-contain sm:h-12 md:h-14"
-            priority
-            unoptimized
-          />
+          <svg
+            viewBox="0 0 1420 514"
+            role="img"
+            aria-label="Dreyz Interior"
+            className="h-auto w-36 object-contain sm:w-40 md:w-44"
+          >
+            <defs>
+              <mask id="dreyz-menu-logo-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1420" height="514" style={{ maskType: "luminance" }}>
+                <image href={media.logo} width="1420" height="514" style={{ filter: "invert(1)" }} />
+              </mask>
+            </defs>
+            <rect width="1420" height="514" fill="black" mask="url(#dreyz-menu-logo-mask)" />
+          </svg>
         </Link>
 
         <nav
           aria-label="Menu"
-          className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-0.5 lg:flex"
+          className="hidden items-center gap-0.5 lg:flex"
         >
           {navLinks.map((link) => {
             const active = isActive(link.href, link.label);
@@ -142,7 +145,7 @@ export function Header() {
                 className={cn(
                   "relative rounded-full px-2.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition-all duration-300 xl:px-3 xl:text-[11px]",
                   active
-                    ? "bg-olive/85 text-white shadow-[0_4px_14px_rgba(160,176,36,0.35)] backdrop-blur-md"
+                    ? "bg-olive/85 text-white shadow-[0_4px_14px_rgba(23,54,108,0.35)] backdrop-blur-md"
                     : "text-ink/55 hover:glass-chip hover:text-ink"
                 )}
               >
@@ -157,7 +160,7 @@ export function Header() {
 
           <Link
             href="/contact"
-            className="group relative hidden overflow-hidden rounded-full bg-olive px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_4px_16px_rgba(160,176,36,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(160,176,36,0.45)] sm:inline-flex md:px-5 md:py-2.5 md:text-[11px]"
+            className="group relative hidden overflow-hidden rounded-full bg-olive px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_4px_16px_rgba(23,54,108,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(23,54,108,0.45)] sm:inline-flex md:px-5 md:py-2.5 md:text-[11px]"
           >
             <span className="relative z-10">Enroll Now</span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition duration-700 group-hover:translate-x-full" />
@@ -204,7 +207,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -6, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 max-h-[min(72vh,540px)] overflow-y-auto overflow-x-hidden rounded-[1.35rem] glass-strong lg:hidden"
+              className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 max-h-[min(72vh,540px)] overflow-y-auto overflow-x-hidden rounded-[1.35rem] glass-strong glass-mobile-menu lg:hidden"
               aria-label="Mobile menu"
             >
               <ul className="space-y-1 p-3 sm:p-4">
@@ -242,7 +245,7 @@ export function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-olive px-5 py-3.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(160,176,36,0.35)]"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-olive px-5 py-3.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(23,54,108,0.35)]"
                 >
                   Enroll Now
                 </Link>

@@ -44,15 +44,15 @@ export function ServicesPreview() {
                 sizes="(max-width:768px) 100vw, 33vw"
                 className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#E0DDCF]/95 via-[#E0DDCF]/35 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F0F0F0]/95 via-[#F0F0F0]/35 to-transparent" />
+                <div className="text-on-image absolute inset-x-0 bottom-0 p-6">
                 <p className="text-[10px] uppercase tracking-[0.22em] text-orange">
                   0{i + 1}
                 </p>
-                <h3 className="font-display mt-2 text-2xl text-ink md:text-3xl">
+                <h3 className="font-display mt-2 text-2xl text-white md:text-3xl">
                   {service.title}
                 </h3>
-                <p className="mt-3 line-clamp-2 text-sm text-ink/70">
+                <p className="mt-3 line-clamp-2 text-sm text-white/75">
                   {service.short}
                 </p>
               </div>

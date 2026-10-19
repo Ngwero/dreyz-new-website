@@ -121,7 +121,7 @@ export default function AboutPage() {
 
       {/* Approach + photography */}
       <section className="relative overflow-hidden py-20 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(208,96,64,0.08),transparent_50%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(69,16,46,0.08),transparent_50%)]" />
         <div className="relative mx-auto max-w-[1440px] px-5 md:px-10 lg:px-14">
           <div className="mb-12 flex flex-col gap-6 md:mb-16 md:flex-row md:items-end md:justify-between">
             <div className="max-w-xl">

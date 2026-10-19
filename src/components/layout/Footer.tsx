@@ -21,9 +21,9 @@ export function Footer() {
             <Image
               src={media.logo}
               alt="Dreyz Interior"
-              width={180}
-              height={180}
-              className="mb-6 h-24 w-auto bg-transparent object-contain"
+              width={1420}
+              height={514}
+              className="mb-6 h-auto w-64 max-w-full object-contain mix-blend-multiply"
               unoptimized
             />
             <p className="max-w-sm text-sm leading-relaxed text-muted">
@@ -76,8 +76,19 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()}, All rights reserved Dreyz Interior
           </p>
+          <p>
+            Created by{" "}
+            <a
+              href="https://wa.me/256705161161"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink/70 transition hover:text-orange"
+            >
+              FavorSphere
+            </a>
+          </p>
           <p className="tracking-[0.14em] uppercase text-orange">
-            Design · Comfort · Bliss
+            {studio.tagline}
           </p>
         </div>
       </Container>

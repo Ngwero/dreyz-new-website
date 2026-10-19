@@ -155,7 +155,10 @@ export function Hero() {
                 href="/projects"
                 className="glass-button inline-flex min-h-14 w-full items-center justify-between gap-10 rounded-full px-7 text-[11px] uppercase tracking-[0.16em] text-white sm:w-auto"
               >
-                Explore our work <span aria-hidden className="text-xl">↗</span>
+                <span>Explore our work</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 shrink-0">
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg>
               </Link>
               <Link
                 href="/contact"

@@ -37,6 +37,13 @@ function SocialIcons({ className }: { className?: string }) {
     ),
   };
 
+  const brandClass: Record<string, string> = {
+    Facebook: "bg-[#1877F2] hover:bg-[#0f5fd0] hover:shadow-[0_4px_14px_rgba(24,119,242,0.45)]",
+    X: "bg-black hover:bg-[#111] hover:shadow-[0_4px_14px_rgba(0,0,0,0.35)]",
+    Instagram:
+      "bg-[linear-gradient(135deg,#f58529,#dd2a7b,#8134af,#515bd4)] hover:brightness-110 hover:shadow-[0_4px_14px_rgba(221,42,123,0.4)]",
+  };
+
   return (
     <div className={cn("flex items-center gap-2", className)}>
       {studio.contact.socials.map((s) => (
@@ -48,7 +55,7 @@ function SocialIcons({ className }: { className?: string }) {
           aria-label={s.label}
           className={cn(
             "flex h-8 w-8 items-center justify-center rounded-full text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-95 sm:h-[1.85rem] sm:w-[1.85rem]",
-            "bg-burgundy hover:bg-sand hover:shadow-[0_4px_14px_rgba(69,16,46,0.35)]"
+            brandClass[s.label] ?? "bg-slate"
           )}
         >
           {icons[s.label]}

@@ -2,6 +2,7 @@ import manifest from "./media-manifest.json";
 
 export const media = {
   logo: "/images/brand/dreyz-logo.png",
+  logoTransparent: "/images/brand/dreyz-logo-transparent.png",
   logoDark: "/images/brand/dreyz-logo.png",
   logoMark: "/images/brand/dreyz-mark.png",
   marble: "/images/brand/marble.jpg",

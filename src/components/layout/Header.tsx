@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
@@ -117,19 +118,15 @@ export function Header() {
           className="relative z-20 shrink-0 rounded-full pl-0.5 transition hover:opacity-80 sm:pl-1"
           onClick={() => setOpen(false)}
         >
-          <svg
-            viewBox="0 0 1420 514"
-            role="img"
-            aria-label="Dreyz Interior"
+          <Image
+            src={media.logoTransparent}
+            alt="Dreyz Interior"
+            width={1420}
+            height={514}
             className="h-auto w-36 object-contain sm:w-40 md:w-44"
-          >
-            <defs>
-              <mask id="dreyz-menu-logo-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1420" height="514" style={{ maskType: "luminance" }}>
-                <image href={media.logo} width="1420" height="514" style={{ filter: "invert(1)" }} />
-              </mask>
-            </defs>
-            <rect width="1420" height="514" fill="black" mask="url(#dreyz-menu-logo-mask)" />
-          </svg>
+            priority
+            unoptimized
+          />
         </Link>
 
         <nav

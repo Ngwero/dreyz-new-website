@@ -142,7 +142,7 @@ export function Header() {
                 className={cn(
                   "relative rounded-full px-2.5 py-1.5 text-[10px] font-medium uppercase tracking-[0.08em] transition-all duration-300 xl:px-3 xl:text-[11px]",
                   active
-                    ? "bg-olive/85 text-white shadow-[0_4px_14px_rgba(23,54,108,0.35)] backdrop-blur-md"
+                    ? "bg-burgundy/85 text-white shadow-[0_4px_14px_rgba(69,16,46,0.35)] backdrop-blur-md"
                     : "text-ink/55 hover:glass-chip hover:text-ink"
                 )}
               >
@@ -157,7 +157,7 @@ export function Header() {
 
           <Link
             href="/contact"
-            className="group relative hidden overflow-hidden rounded-full bg-olive px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_4px_16px_rgba(23,54,108,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(23,54,108,0.45)] sm:inline-flex md:px-5 md:py-2.5 md:text-[11px]"
+            className="group relative hidden overflow-hidden rounded-full bg-burgundy px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_4px_16px_rgba(69,16,46,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(69,16,46,0.45)] sm:inline-flex md:px-5 md:py-2.5 md:text-[11px]"
           >
             <span className="relative z-10">Enroll Now</span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition duration-700 group-hover:translate-x-full" />
@@ -170,7 +170,7 @@ export function Header() {
             onClick={() => setOpen((v) => !v)}
             className={cn(
               "flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300 lg:hidden",
-              open ? "bg-olive text-white" : "glass-chip text-ink hover:bg-white/70"
+              open ? "bg-burgundy text-white" : "glass-chip text-ink hover:bg-white/70"
             )}
           >
             <span className="sr-only">{open ? "Close" : "Menu"}</span>
@@ -223,7 +223,7 @@ export function Header() {
                         className={cn(
                           "flex items-center justify-between rounded-2xl px-4 py-3.5 text-[13px] font-medium uppercase tracking-[0.08em] transition",
                           active
-                            ? "bg-olive/90 text-white backdrop-blur-md"
+                            ? "bg-burgundy/90 text-white backdrop-blur-md"
                             : "text-ink/70 hover:bg-white/60 hover:text-ink hover:backdrop-blur-sm"
                         )}
                       >
@@ -242,7 +242,7 @@ export function Header() {
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-olive px-5 py-3.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(23,54,108,0.35)]"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-burgundy px-5 py-3.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(69,16,46,0.35)]"
                 >
                   Enroll Now
                 </Link>
